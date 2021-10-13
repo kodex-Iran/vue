@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        counter : {{ counter }}
+    </div>
+
+
+
+    <script src="node_modules/vue/dist/vue.global.js"></script>
+    <script>
+        const myvariable={
+            data(){
+                return{
+                    counter : 0
+                }
+            },
+            mounted(){
+                setInterval(()=>{
+                    this.counter++
+                }, 1000 )
+            }
+        }
+        Vue.createApp(myvariable).mount("#container")
+    </script>
+</body>
+</html>

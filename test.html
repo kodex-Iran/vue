@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color-red{
+            color:red;
+        }
+        .color-blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="counter">
+       <ul>
+           <lilist
+                v-for="item in colors"
+                v-bind:todo="item"
+                v-bind:key="item.id"
+           >
+           </lilist>
+       </ul>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.global.js"></script>
+    <script>
+        const myclass = {
+            data(){
+                return{
+                    colors:[
+                        { id:0 , text:"green"},
+                        { id:1 , text:"red"},
+                        { id:2 , text:"blue"},
+                    ]
+                }
+            }
+        }
+        const app = Vue.createApp(myclass)
+        app.component("lilist",{
+            props:['todo'],
+            template:'<li>{{todo.id}}{{ todo.text }}</li>'
+        })
+        app.mount("#counter")
+    </script>
+</body>
+</html>
